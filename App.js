@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Ticker from './components/Ticker/Ticker';
 import Row from './components/Row/Row.js';
+import Column from './components/Column/Column.js';
+import { MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 import { ORANGE_RED } from './styles/common';
 export default class App extends Component {
   state = {
@@ -13,7 +15,6 @@ export default class App extends Component {
     });
   };
   render() {
-    const { secondTimer } = this.state;
     return (
       <View style={styles.container}>
         <SafeAreaView style={styles.profile}>
@@ -52,6 +53,41 @@ export default class App extends Component {
           bodyTextColor={'#FFF'}
           titleFont={ORANGE_RED}
         />
+        <View style={styles.row}>
+          <Column>
+            <MaterialCommunityIcons
+              name="shoe-heel"
+              size={100}
+              color={ORANGE_RED}
+            />
+            <View
+              style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}
+            >
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+            </View>
+          </Column>
+          <Column>
+            <Feather name="watch" size={90} color={ORANGE_RED} />
+            <View
+              style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}
+            >
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+            </View>
+          </Column>
+          <Column>
+            <MaterialCommunityIcons
+              name="shoe-heel"
+              size={100}
+              color={ORANGE_RED}
+            />
+            <View style={{ flexDirection: 'row', flex: 1 }}>
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+              <Ticker value={6} startTimer={true} tickerColor={ORANGE_RED} />
+            </View>
+          </Column>
+        </View>
       </View>
     );
   }
@@ -89,11 +125,31 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    justifyContent: 'space-evenly',
+
+    flex: 0.3
   },
   spentText: {
     fontSize: 70,
     marginBottom: 100,
     color: '#FF4806'
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    backgroundColor: 'green',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  iconColumn: {
+    flex: 0.2,
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 });

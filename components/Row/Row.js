@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
   bottomTitle: {
     color: '#FEC0A9',
     fontSize: 25,
-    marginTop: 10
+    marginTop: 5
   }
 });
